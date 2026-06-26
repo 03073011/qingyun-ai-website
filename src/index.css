@@ -84,6 +84,18 @@ a { color: inherit; text-decoration: none; }
   letter-spacing: 0.3px;
 }
 .nav-links a:hover { color: #fff; }
+.nav-links a.active {
+  color: #fff;
+  position: relative;
+}
+.nav-links a.active::after {
+  content: '';
+  position: absolute; bottom: -4px; left: 0; right: 0;
+  height: 2px;
+  background: var(--accent);
+  border-radius: 1px;
+  box-shadow: 0 0 8px var(--accent-glow);
+}
 .nav-cta {
   padding: 10px 28px;
   background: linear-gradient(135deg, rgba(108,148,255,0.15), rgba(177,149,250,0.1));
@@ -196,7 +208,6 @@ a { color: inherit; text-decoration: none; }
 .section .container { position: relative; z-index: 2; }
 .section .services-grid,
 .section .process-steps,
-.section .portfolio-grid,
 .section .contact-cards { position: relative; z-index: 2; }
 
 .section-label {
@@ -345,53 +356,68 @@ a { color: inherit; text-decoration: none; }
 .process-step h4 { font-size: 1.2rem; font-weight: 700; margin-bottom: 10px; }
 .process-step p { color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6; }
 
-/* ===== Portfolio ===== */
-.portfolio-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
+/* ===== Partnerships (Portfolio) ===== */
+.partners-list {
+  max-width: 780px; margin: 0 auto 56px;
+  display: flex; flex-direction: column; gap: 20px;
 }
-.portfolio-card {
-  position: relative;
-  border-radius: var(--radius);
-  overflow: hidden;
-  aspect-ratio: 4/3;
+.partner-card {
+  padding: 36px 40px;
   background: var(--bg-card);
   border: 1px solid var(--border-subtle);
-  cursor: pointer;
-  transition: all 0.45s cubic-bezier(0.25, 0.8, 0.25, 1.2);
-  backdrop-filter: blur(8px);
+  border-radius: var(--radius);
+  transition: border-color 0.3s;
+  position: relative;
 }
-.portfolio-card:hover {
-  border-color: var(--border-glow);
-  transform: translateY(-6px);
-  box-shadow: 0 28px 56px rgba(0,0,0,0.5);
-}
-.portfolio-card .card-img {
-  width: 100%; height: 100%;
-  background: linear-gradient(135deg, #1a1a3e 0%, #0f0f2a 50%, #1a1a30 100%);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 3rem;
-  opacity: 0.6;
+.partner-card::before {
+  content: '';
+  position: absolute; left: 0; top: 20%; bottom: 20%;
+  width: 3px;
+  background: var(--gradient-hero);
+  border-radius: 0 2px 2px 0;
+  opacity: 0;
   transition: opacity 0.3s;
 }
-.portfolio-card:hover .card-img { opacity: 0.8; }
-.portfolio-card .card-overlay {
-  position: absolute; bottom: 0; left: 0; right: 0;
-  padding: 24px;
-  background: linear-gradient(transparent, rgba(0,0,0,0.85));
+.partner-card:hover { border-color: var(--border-glow); }
+.partner-card:hover::before { opacity: 1; }
+.partner-header {
+  display: flex; align-items: center; gap: 16px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
 }
-.portfolio-card .card-tag {
-  font-family: var(--font-mono);
-  font-size: 0.7rem; font-weight: 500;
+.partner-industry {
+  font-size: 0.78rem; font-weight: 700;
+  padding: 6px 14px;
+  border-radius: 14px;
+  background: rgba(108,148,255,0.1);
   color: var(--accent);
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
-  margin-bottom: 6px;
+  letter-spacing: 0.5px;
 }
-.portfolio-card .card-title { font-size: 1.1rem; font-weight: 700; }
-.portfolio-card .card-desc { font-size: 0.82rem; color: var(--text-muted); margin-top: 4px; }
-.portfolio-grid-3 { max-width: 1000px; margin: 0 auto; }
+.partner-scope {
+  font-size: 0.82rem; color: var(--text-muted);
+  font-family: var(--font-mono);
+}
+.partner-highlight {
+  font-size: 1.1rem; font-weight: 600;
+  color: #fff;
+  margin-bottom: 10px;
+  line-height: 1.5;
+  font-style: normal;
+  border: none;
+  padding: 0;
+}
+.partner-result {
+  font-size: 0.9rem; color: var(--text-secondary);
+  line-height: 1.6;
+}
+.partners-cta {
+  text-align: center; max-width: 780px; margin: 0 auto;
+  padding: 40px 0;
+  border-top: 1px solid var(--border-subtle);
+}
+.partners-cta p {
+  color: var(--text-muted); font-size: 0.95rem; margin-bottom: 20px;
+}
 
 /* ===== Contact ===== */
 #contact {
@@ -522,10 +548,21 @@ a { color: inherit; text-decoration: none; }
 
 /* ===== Footer ===== */
 .footer {
-  text-align: center; padding: 32px 0;
+  padding: 72px 0 32px;
   border-top: 1px solid var(--border-subtle);
-  font-size: 0.82rem; color: var(--text-muted);
+  background: var(--bg-primary);
 }
+.footer-grid {
+  display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 48px;
+  margin-bottom: 48px;
+}
+.footer-logo { font-size: 1.1rem; font-weight: 700; display: block; margin-bottom: 12px; }
+.footer-brand p { color: var(--text-secondary); font-size: 0.88rem; line-height: 1.65; max-width: 320px; }
+.footer-heading { font-size: 0.78rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 16px; }
+.footer-links { display: flex; flex-direction: column; gap: 10px; }
+.footer-links a, .footer-contact { color: var(--text-secondary); font-size: 0.88rem; transition: color 0.2s; }
+.footer-links a:hover { color: #fff; }
+.footer-bottom { padding-top: 24px; border-top: 1px solid var(--border-subtle); text-align: center; font-size: 0.78rem; color: var(--text-muted); }
 
 /* ===== Animations ===== */
 @keyframes pulse {
@@ -543,7 +580,9 @@ a { color: inherit; text-decoration: none; }
 /* ===== Responsive ===== */
 @media (max-width: 1200px) {
   .services-grid { grid-template-columns: repeat(2, 1fr); }
-  .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
+  .partners-list { position: relative; z-index: 2; }
+  .partner-card { padding: 28px 28px; }
+  .partner-header { gap: 10px; }
   .contact-cards { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
   .contact-cards-3 { grid-template-columns: 1fr; }
   .hero-stats { gap: 32px; flex-wrap: wrap; }
@@ -555,8 +594,9 @@ a { color: inherit; text-decoration: none; }
   .nav-links { display: none; }
   .hero h1 { font-size: 2.4rem; }
   .services-grid { grid-template-columns: 1fr; }
-  .portfolio-grid { grid-template-columns: 1fr; }
+  .partners-list { position: relative; z-index: 2; }
   .process-steps { flex-direction: column; gap: 40px; }
   .process-steps::before { display: none; }
+  .footer-grid { grid-template-columns: 1fr; gap: 32px; }
   .form-row { grid-template-columns: 1fr; }
 }

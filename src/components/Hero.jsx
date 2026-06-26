@@ -13,7 +13,6 @@ export default function Hero() {
         twinkleIntensity={0.3}
         rotationSpeed={0.06}
         repulsionStrength={0}
-        transparent={true}
       />
       <div className="container">
         <div className="hero-badge">
@@ -24,7 +23,7 @@ export default function Hero() {
           <span className="gradient-text">AI 赋能企业</span>
         </h1>
         <p className="hero-subtitle">
-          以 AI 为底座，为企业打造持续进化的数字能力
+          从品牌官网到 AI 智能体，从知识库到业务工作流——1对1定制，拒绝模板。
         </p>
         <div className="hero-actions">
           <a href="#contact" className="btn-primary">立即咨询</a>

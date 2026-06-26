@@ -44,15 +44,15 @@ export default function ScrollAnimations() {
       }
     })
 
-    // Process — steps pop with GSAP elastic
+    // Process — steps pop with elastic
     const steps = document.querySelectorAll('#process .process-step')
     gsap.fromTo(steps,
-      { opacity: 0, scale: 0.5, rotation: -8 },
+      { opacity: 0, scale: 0.7, y: 30 },
       {
-        opacity: 1, scale: 1, rotation: 0,
+        opacity: 1, scale: 1, y: 0,
         duration: 0.7,
-        stagger: 0.25,
-        ease: 'elastic.out(1, 0.6)',
+        stagger: 0.2,
+        ease: 'back.out(1.4)',
         scrollTrigger: {
           trigger: '#process',
           start: 'top 70%',
@@ -61,21 +61,12 @@ export default function ScrollAnimations() {
       }
     )
 
-    // Portfolio — cards slide up with scale
-    const portfolioCards = document.querySelectorAll('#portfolio .portfolio-card')
-    gsap.fromTo(portfolioCards,
-      { opacity: 0, y: 100, scale: 0.9 },
-      {
-        opacity: 1, y: 0, scale: 1,
-        duration: 0.8,
-        stagger: 0.15,
-        ease: 'power4.out',
-        scrollTrigger: {
-          trigger: '#portfolio',
-          start: 'top 70%',
-          toggleActions: 'play none none none',
-        }
-      }
+    // Portfolio — partner cards fade in with left slide
+    const partnerCards = document.querySelectorAll('#portfolio .partner-card')
+    gsap.fromTo(partnerCards,
+      { opacity: 0, x: -30 },
+      { opacity: 1, x: 0, duration: 0.7, stagger: 0.12, ease: 'power3.out',
+        scrollTrigger: { trigger: '#portfolio', start: 'top 70%', toggleActions: 'play none none none' } }
     )
 
     return () => {
