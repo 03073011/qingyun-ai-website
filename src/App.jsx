@@ -39,6 +39,11 @@ export default function App() {
           </div>
           <div className="footer-bottom">
             <p>© 2026 清云智矩. All rights reserved.</p>
+            <p className="icp">
+              <a href="https://beian.miit.gov.cn/" target="_blank" rel="noreferrer">鄂ICP备2026033444号-1</a>
+              <span className="icp-sep">|</span>
+              <a href="https://www.qyzjwh.com/admin/" target="_blank" rel="noreferrer">管理员模式</a>
+            </p>
           </div>
         </div>
       </footer>
