@@ -21,9 +21,7 @@ export default function Hero() {
             企业级 AI 数字化解决方案
           </div>
           <h1>
-            <span className="gradient-text">让 AI 真正</span>
-            <br />
-            为你的业务干活
+            <span className="gradient-text">AI 赋能企业</span>
           </h1>
           <p className="hero-subtitle">
             不卖通用产品。先聊你的业务痛点，再从数据库、大模型到工作流，一步步定制落地。

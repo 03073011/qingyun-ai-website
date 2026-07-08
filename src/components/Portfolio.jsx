@@ -1,72 +1,107 @@
+import { useEffect, useState } from 'react'
+
 const cases = [
   {
     industry: '电力 · 建筑工程',
     title: '智能投标平台',
-    subtitle: '从招标解析到标书生成的全流程 AI 系统',
-    metrics: [
-      { value: '85%+', label: '重复性人工节约' },
-      { value: '95%', label: '条款自动抽取' },
-      { value: '88%', label: '初稿撰写提效' },
-    ],
-    scope: '招标解析 · 响应矩阵 · 资料库证据召回 · 逐章生成 · 合规复核 · DOCX/PDF 导出',
-    highlight: '不是卖一个 AI 问答入口，而是围绕企业资料库、证据矩阵和合规门禁，建立可追溯、可复核的长期投标能力。',
-    result: '本地化部署，数据安全分层隔离。所有生成内容保留证据来源和待确认标记，正式提交前由投标负责人最终审核。',
+    pain: '标书几百页，条款摘不完，材料到处散落，怕漏关键项废标。',
+    solution: '系统自动读招标文件、从企业资料库匹配证据、逐章生成标书草稿，导出前自动检查废标项。',
+    result: '资料整理和初稿撰写时间节约 85%+',
+    stat: '85%',
+    statLabel: '重复性人工节约',
   },
   {
     industry: '外贸 · 跨境电商',
     title: 'AI 获客引擎',
-    subtitle: '从产品管理到客户开发信的全自动获客系统',
-    metrics: [
-      { value: '0→1', label: '自研获客引擎' },
-      { value: '100', label: '候选公司智能排序' },
-      { value: '81%', label: 'AI 匹配达标率' },
-    ],
-    scope: '产品库 · AI 客户方向生成 · 自研获客引擎 · 产品-公司智能匹配 · 英文开发信草稿 · 客户研究',
-    highlight: '面向外贸小团队：人少、产品多、英文压力大不是问题。系统自动发现高质量客户、智能匹配评分、生成可审核的开发信，全部沉淀到本地数据库，可复盘可复用。',
-    result: '本地 SQLite 数据库，敏感信息保护。AI 生成草稿但不自动群发，用户决定是否外发——效率和安全兼顾。',
+    pain: '人少产品多，不知道客户在哪，英文开发信写不过来。',
+    solution: '录入产品 → AI 分析目标客户 → 搜索引擎找公司 → 智能匹配评分 → 自动生成英文开发信草稿。',
+    result: '一个人即可管理上百产品、上千客户线索，全流程 AI 辅助。',
+    stat: '0→1',
+    statLabel: '从零搭建完整获客系统',
+  },
+  {
+    industry: '建筑工程',
+    title: '项目知识管理平台',
+    pain: '项目文档堆成山，老员工的经验记在脑子里，新来的人什么都要问。',
+    solution: '项目资料统一入库 → AI 自动分类打标签 → 历史项目经验可检索问答 → 审批和进度自动提醒。',
+    result: '文档查找从几小时缩到几秒，项目经验全员可复用。',
+    stat: '10万+',
+    statLabel: '份企业文档资产沉淀',
   },
 ]
 
 export default function Portfolio() {
+  const [active, setActive] = useState(0)
+  const [paused, setPaused] = useState(false)
+
+  useEffect(() => {
+    if (paused) return
+    const t = setInterval(() => setActive(i => (i + 1) % cases.length), 4000)
+    return () => clearInterval(t)
+  }, [paused])
+
   return (
     <section className="section" id="portfolio">
       <div className="container">
         <div className="section-header">
           <span className="section-label">Case Studies</span>
           <h2 className="section-title">合作成果</h2>
-          <p className="section-desc">
-            不是"做过什么项目"，而是"为合作伙伴创造了什么价值"。
-          </p>
+          <p className="section-desc">真实项目，真实效果。不是PPT概念，是已经跑在生产环境里的系统。</p>
         </div>
 
-        <div className="cases-grid">
-          {cases.map((c, i) => (
-            <article key={i} className="case-card fade-in" style={{ animationDelay: `${i * 0.2}s` }}>
-              <div className="case-header">
-                <span className="case-industry">{c.industry}</span>
-                <h3 className="case-title">{c.title}</h3>
-                <p className="case-subtitle">{c.subtitle}</p>
-              </div>
+        <div
+          className="case-slider fade-in"
+          onMouseEnter={() => setPaused(true)}
+          onMouseLeave={() => setPaused(false)}
+        >
+          <div className="case-window">
+            <div className="case-track" style={{ transform: `translateX(-${active * 100}%)` }}>
+              {cases.map((c, i) => (
+                <article key={i} className="case-slide" aria-hidden={active !== i}>
+                  <div className="case-card">
+                    <div className="case-top">
+                      <span className="case-industry">{c.industry}</span>
+                      <h3 className="case-title">{c.title}</h3>
+                    </div>
 
-              <div className="case-metrics">
-                {c.metrics.map((m, j) => (
-                  <div key={j} className="case-metric">
-                    <span className="case-metric-value">{m.value}</span>
-                    <span className="case-metric-label">{m.label}</span>
+                    <div className="case-body">
+                      <div className="case-line">
+                        <span className="case-label">痛点</span>
+                        <p>{c.pain}</p>
+                      </div>
+                      <div className="case-line">
+                        <span className="case-label">方案</span>
+                        <p>{c.solution}</p>
+                      </div>
+                      <div className="case-line">
+                        <span className="case-label">效果</span>
+                        <p>{c.result}</p>
+                      </div>
+                    </div>
+
+                    <div className="case-stat">
+                      <span className="case-stat-value">{c.stat}</span>
+                      <span className="case-stat-label">{c.statLabel}</span>
+                    </div>
                   </div>
-                ))}
-              </div>
+                </article>
+              ))}
+            </div>
+          </div>
 
-              <div className="case-scope">
-                <span className="case-scope-label">涉及模块</span>
-                <p>{c.scope}</p>
-              </div>
-
-              <blockquote className="case-highlight">{c.highlight}</blockquote>
-
-              <p className="case-result">{c.result}</p>
-            </article>
-          ))}
+          <div className="case-controls">
+            {cases.map((c, i) => (
+              <button
+                key={i}
+                type="button"
+                className={`case-dot ${active === i ? 'active' : ''}`}
+                aria-label={`${c.title}`}
+                onClick={() => setActive(i)}
+              >
+                <span />
+              </button>
+            ))}
+          </div>
         </div>
 
         <div className="partners-cta fade-in">
