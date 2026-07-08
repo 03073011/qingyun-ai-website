@@ -1,3 +1,5 @@
+import TiltCard from './TiltCard'
+
 const pillars = [
   {
     tag: '01',
@@ -44,7 +46,7 @@ export default function Services() {
         </div>
         <div className="pillars-grid">
           {pillars.map((p, i) => (
-            <article key={i} className="pillar-card">
+            <TiltCard key={i} className="pillar-card" strength={4}>
               <span className="pillar-tag">{p.tag}</span>
               <h3 className="pillar-title">{p.title}</h3>
               <p className="pillar-subtitle">{p.subtitle}</p>
@@ -53,7 +55,7 @@ export default function Services() {
                   <li key={j}>{item}</li>
                 ))}
               </ul>
-            </article>
+            </TiltCard>
           ))}
         </div>
       </div>
