@@ -21,20 +21,22 @@ export default function Hero() {
             企业级 AI 数字化解决方案
           </div>
           <h1>
-            <span className="gradient-text">AI 赋能企业</span>
+            <span className="gradient-text">让 AI 真正</span>
+            <br />
+            为你的业务干活
           </h1>
           <p className="hero-subtitle">
-            从企业数据库到 AI 智能体，从知识库到业务工作流——1对1定制，拒绝模板。
+            不卖通用产品。先聊你的业务痛点，再从数据库、大模型到工作流，一步步定制落地。
           </p>
           <div className="hero-capability-pills" aria-label="核心能力">
-            <span>数据底座</span>
-            <span>知识库 / RAG</span>
-            <span>AI 智能体</span>
-            <span>业务工作流</span>
+            <span>企业数据库</span>
+            <span>智能知识库</span>
+            <span>业务自动化</span>
+            <span>AI 决策辅助</span>
           </div>
           <div className="hero-actions">
-            <a href="#contact" className="btn-primary">立即咨询</a>
-            <a href="#portfolio" className="btn-ghost">查看合作成果 →</a>
+            <a href="#contact" className="btn-primary">预约需求评估</a>
+            <a href="#portfolio" className="btn-ghost">查看案例 →</a>
           </div>
         </div>
       </div>

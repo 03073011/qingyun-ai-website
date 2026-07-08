@@ -70,8 +70,8 @@ export default function Portfolio() {
         </div>
 
         <div className="partners-cta fade-in">
-          <p>期待你的企业成为下一个合作成果。</p>
-          <a href="#contact" className="btn-primary">开启合作 →</a>
+          <p>你的企业，会成为下一个案例吗？</p>
+          <a href="#contact" className="btn-primary">聊聊你的需求 →</a>
         </div>
       </div>
     </section>

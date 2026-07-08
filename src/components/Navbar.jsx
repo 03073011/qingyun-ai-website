@@ -1,7 +1,6 @@
 import { useState, useEffect, useCallback } from 'react'
 
 const links = [
-  { href: '#hero', label: '首页' },
   { href: '#services', label: '核心服务' },
   { href: '#process', label: '合作流程' },
   { href: '#portfolio', label: '合作成果' },
@@ -40,7 +39,7 @@ export default function Navbar() {
             </li>
           ))}
         </ul>
-        <a href="#contact" className="nav-cta">立即咨询</a>
+        <a href="#contact" className="nav-cta">预约咨询</a>
       </div>
     </nav>
   )
