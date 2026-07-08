@@ -9,9 +9,11 @@ const links = [
 
 export default function Navbar() {
   const [active, setActive] = useState('#hero')
+  const [scrolled, setScrolled] = useState(false)
 
   const onScroll = useCallback(() => {
     const scrollY = window.scrollY + 100
+    setScrolled(window.scrollY > 50)
     const sections = links.map(l => document.querySelector(l.href)).filter(Boolean)
     for (let i = sections.length - 1; i >= 0; i--) {
       if (sections[i].offsetTop <= scrollY) { setActive('#' + sections[i].id); return }
@@ -26,7 +28,7 @@ export default function Navbar() {
   }, [onScroll])
 
   return (
-    <nav className="navbar">
+    <nav className={`navbar${scrolled ? ' scrolled' : ''}`}>
       <div className="container">
         <a href="#" className="nav-logo">
           <span className="logo-icon">◆</span>
