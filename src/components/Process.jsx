@@ -27,8 +27,8 @@ export default function Process() {
         <div className="process-note fade-in">
           <span className="process-note-label">沟通优先</span>
           <div>
-            <h3>欢迎交流沟通，先把需求提出来最重要。</h3>
-            <p>需求不需要一次讲完整。你可以先说业务里最耗时、最重复、最想优化的环节，我们一起判断哪里最适合用数据库和大模型先落地。</p>
+            <h3>先聊需求，再看方案——我们不卖通用产品。</h3>
+            <p>需求不需要一次讲完整。你可以先说业务里最耗时、最重复、最想优化的环节，我们一起判断哪里最适合用数据库和大模型先落地。这是清云智矩和市面上 AI 产品最大的区别。</p>
           </div>
         </div>
       </div>
