@@ -360,7 +360,77 @@ a { color: inherit; text-decoration: none; }
 }
 .section-desc { color: var(--text-secondary); max-width: 560px; margin: 0 auto; font-size: 1rem; }
 
-/* ===== Services ===== */
+/* ===== Pillars (Services) ===== */
+.pillars-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  position: relative;
+  z-index: 2;
+}
+.pillar-card {
+  position: relative;
+  padding: 44px 36px 36px;
+  border: 1px solid rgba(148, 163, 184, 0.12);
+  border-radius: var(--radius);
+  background: linear-gradient(180deg, rgba(15, 22, 38, 0.82), rgba(12, 17, 30, 0.74));
+  transition: border-color 0.4s, transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1.2), box-shadow 0.4s;
+  overflow: hidden;
+}
+.pillar-card::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+.pillar-card:hover {
+  border-color: rgba(121, 167, 255, 0.3);
+  transform: translateY(-6px);
+  box-shadow: 0 28px 56px rgba(0, 0, 0, 0.32);
+}
+.pillar-card:hover::before { opacity: 1; }
+.pillar-tag {
+  font-family: var(--font-mono);
+  font-size: 0.8rem; font-weight: 700;
+  color: var(--accent);
+  letter-spacing: 1px;
+  display: block;
+  margin-bottom: 20px;
+}
+.pillar-title {
+  font-size: 1.55rem; font-weight: 800;
+  letter-spacing: -0.5px;
+  margin-bottom: 8px;
+}
+.pillar-subtitle {
+  color: var(--text-secondary);
+  font-size: 0.92rem;
+  margin-bottom: 24px;
+  line-height: 1.5;
+}
+.pillar-items {
+  list-style: none;
+  display: flex; flex-direction: column; gap: 14px;
+}
+.pillar-items li {
+  position: relative;
+  padding-left: 18px;
+  color: var(--text-secondary);
+  font-size: 0.88rem;
+  line-height: 1.55;
+}
+.pillar-items li::before {
+  content: '';
+  position: absolute; left: 0; top: 0.58em;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  opacity: 0.5;
+}
+
+/* ===== Services (legacy — kept for reference) ===== */
 #services { background: var(--bg-secondary); }
 .services-grid {
   display: grid;
@@ -951,6 +1021,8 @@ a { color: inherit; text-decoration: none; }
     max-width: 560px;
   }
   .services-grid { grid-template-columns: repeat(2, 1fr); }
+  .pillars-grid { grid-template-columns: 1fr; gap: 16px; }
+  .pillar-card { padding: 32px 24px; }
   .partners-list { position: relative; z-index: 2; }
   .partner-card { padding: 28px 28px; }
   .partner-header { gap: 10px; }
