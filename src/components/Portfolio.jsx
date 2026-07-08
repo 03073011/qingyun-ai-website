@@ -52,7 +52,7 @@ export default function Portfolio() {
         </div>
 
         <div
-          className="case-slider fade-in"
+          className="case-slider"
           onMouseEnter={() => setPaused(true)}
           onMouseLeave={() => setPaused(false)}
         >

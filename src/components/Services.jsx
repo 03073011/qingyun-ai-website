@@ -44,7 +44,7 @@ export default function Services() {
         </div>
         <div className="pillars-grid">
           {pillars.map((p, i) => (
-            <article key={i} className="pillar-card fade-in" style={{ animationDelay: `${i * 0.15}s` }}>
+            <article key={i} className="pillar-card">
               <span className="pillar-tag">{p.tag}</span>
               <h3 className="pillar-title">{p.title}</h3>
               <p className="pillar-subtitle">{p.subtitle}</p>

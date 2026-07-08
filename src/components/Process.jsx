@@ -17,14 +17,14 @@ export default function Process() {
         </div>
         <div className="process-steps">
           {steps.map((s, i) => (
-            <div key={i} className="process-step fade-in" style={{ animationDelay: `${i * 0.15}s` }}>
+            <div key={i} className="process-step">
               <div className="step-number">{s.num}</div>
               <h4>{s.title}</h4>
               <p>{s.desc}</p>
             </div>
           ))}
         </div>
-        <div className="process-note fade-in">
+        <div className="process-note">
           <span className="process-note-label">沟通优先</span>
           <div>
             <h3>先聊需求，再看方案——我们不卖通用产品。</h3>
