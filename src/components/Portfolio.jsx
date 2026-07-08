@@ -40,6 +40,8 @@ export default function Portfolio() {
     return () => clearInterval(t)
   }, [paused])
 
+  const go = (dir) => setActive(i => (i + dir + cases.length) % cases.length)
+
   return (
     <section className="section" id="portfolio">
       <div className="container">
@@ -54,6 +56,13 @@ export default function Portfolio() {
           onMouseEnter={() => setPaused(true)}
           onMouseLeave={() => setPaused(false)}
         >
+          <button type="button" className="case-arrow case-arrow-left" aria-label="上一个案例" onClick={() => go(-1)}>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+          </button>
+          <button type="button" className="case-arrow case-arrow-right" aria-label="下一个案例" onClick={() => go(1)}>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+          </button>
+
           <div className="case-window">
             <div className="case-track" style={{ transform: `translateX(-${active * 100}%)` }}>
               {cases.map((c, i) => (
