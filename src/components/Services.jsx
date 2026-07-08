@@ -1,11 +1,9 @@
-import BorderGlow from './BorderGlow'
-
 const services = [
-  { tag: '01', title: '品牌官网定制开发', desc: '深度沟通品牌定位与业务目标，从零量身设计。拒绝千篇一律的模板，每一处细节精准传达品牌价值。', side: 'left' },
-  { tag: '02', title: 'AI 能力底座搭建', desc: '大模型接入、RAG知识库、AI Agent工作流——帮企业构建可复用的智能基础设施，而非一次性工具。', side: 'right' },
-  { tag: '03', title: '业务系统对接集成', desc: '打通 OA、ERP、CRM、项目管理等既有系统。让 AI 平台成为企业统一入口，消除信息孤岛。', side: 'left' },
-  { tag: '04', title: '知识资产沉淀', desc: '将历史文档、案例、专家经验转化为可检索、可问答、可复用的企业向量知识库，越用越聪明。', side: 'right' },
-  { tag: '05', title: '持续运营与迭代', desc: '上线只是开始。长期技术支持、性能监控、内容更新——随业务增长持续优化。', side: 'left' },
+  { tag: '01', title: '企业数据库底座建设', desc: '梳理业务数据、文档与流程记录，统一数据结构与权限边界，为后续智能应用打好可持续底座。', side: 'left' },
+  { tag: '02', title: '大模型能力接入', desc: '结合企业场景接入大模型，让问答、生成、分析、总结和辅助决策成为可调用的日常能力。', side: 'right' },
+  { tag: '03', title: '业务流程智能优化', desc: '围绕销售、客服、项目、财务等高频环节设计智能工作流，减少重复录入、人工流转和跨系统沟通成本。', side: 'left' },
+  { tag: '04', title: '知识库与 RAG 应用', desc: '把制度、案例、项目资料和经验沉淀为可检索、可问答、可复用的企业知识库，让信息真正服务业务。', side: 'right' },
+  { tag: '05', title: '持续运营与效率提升', desc: '上线后根据真实使用情况持续优化数据、提示词、权限和流程，让系统越用越贴合企业运行。', side: 'left' },
 ]
 
 export default function Services() {
@@ -16,31 +14,27 @@ export default function Services() {
           <span className="section-label">Core Services</span>
           <h2 className="section-title">核心业务</h2>
           <p className="section-desc" style={{ maxWidth: '680px' }}>
-            从单点工具升级为企业级能力平台。AI ＋ 极致定制，让你的数字资产持续进化。
+            以数据库为底座，接入大模型与业务系统，让企业数据被看见、被调用、被复用，持续优化运行效率。
           </p>
+        </div>
+        <div className="service-system-line fade-in" aria-hidden="true">
+          <span>数据底座</span>
+          <i />
+          <span>大模型能力</span>
+          <i />
+          <span>业务工作流</span>
         </div>
         <div className="services-alt">
           {services.map((s, i) => (
-            <div key={i} className={`service-row ${s.side}`}>
+            <article key={i} className={`service-row ${s.side}`}>
               <div className="service-tag-col">
                 <span className="service-num-big">{s.tag}</span>
               </div>
-              <BorderGlow
-                glowColor="230 80 70"
-                backgroundColor="rgba(20, 24, 48, 0.85)"
-                borderRadius={18}
-                glowRadius={30}
-                glowIntensity={0.6}
-                coneSpread={20}
-                colors={['#6c94ff', '#b195fa', '#34daf0']}
-                fillOpacity={0.3}
-              >
-                <div className="service-card-inner">
-                  <h3>{s.title}</h3>
-                  <p>{s.desc}</p>
-                </div>
-              </BorderGlow>
-            </div>
+              <div className="service-card-inner">
+                <h3>{s.title}</h3>
+                <p>{s.desc}</p>
+              </div>
+            </article>
           ))}
         </div>
       </div>

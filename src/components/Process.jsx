@@ -1,6 +1,6 @@
 const steps = [
-  { num: '01', title: '需求深度沟通', desc: '了解你的业务模式、品牌定位和技术需求，共同梳理项目范围与核心目标。' },
-  { num: '02', title: 'AI 赋能开发', desc: '前端高性能实现 + AI模型/智能体/工作流集成，让网站不只是漂亮，更聪明。' },
+  { num: '01', title: '需求深度沟通', desc: '了解你的业务场景、数据基础和技术需求，共同梳理项目范围与核心目标。' },
+  { num: '02', title: 'AI 赋能开发', desc: '完成数据库、AI 模型、智能体与工作流集成，让系统不只是上线，更能提升效率。' },
   { num: '03', title: '交付与持续维护', desc: '全面测试上线，提供操作文档。上线后持续监控、迭代优化，陪伴你的业务成长。' },
 ]
 
@@ -23,6 +23,13 @@ export default function Process() {
               <p>{s.desc}</p>
             </div>
           ))}
+        </div>
+        <div className="process-note fade-in">
+          <span className="process-note-label">沟通优先</span>
+          <div>
+            <h3>欢迎交流沟通，先把需求提出来最重要。</h3>
+            <p>需求不需要一次讲完整。你可以先说业务里最耗时、最重复、最想优化的环节，我们一起判断哪里最适合用数据库和大模型先落地。</p>
+          </div>
         </div>
       </div>
     </section>

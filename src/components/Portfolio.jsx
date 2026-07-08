@@ -1,3 +1,5 @@
+import { useEffect, useState } from 'react'
+
 // 合作成果：有实际项目后在此补充真实截图与数据
 const partners = [
   {
@@ -21,6 +23,23 @@ const partners = [
 ]
 
 export default function Portfolio() {
+  const [activeIndex, setActiveIndex] = useState(0)
+  const [isPaused, setIsPaused] = useState(false)
+
+  useEffect(() => {
+    if (isPaused || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return undefined
+
+    const timer = window.setInterval(() => {
+      setActiveIndex((index) => (index + 1) % partners.length)
+    }, 4500)
+
+    return () => window.clearInterval(timer)
+  }, [activeIndex, isPaused])
+
+  const goTo = (index) => {
+    setActiveIndex((index + partners.length) % partners.length)
+  }
+
   return (
     <section className="section" id="portfolio">
       <div className="container">
@@ -32,17 +51,61 @@ export default function Portfolio() {
           </p>
         </div>
 
-        <div className="partners-list">
-          {partners.map((p, i) => (
-            <div key={i} className="partner-card fade-in" style={{ animationDelay: `${i * 0.12}s` }}>
-              <div className="partner-header">
-                <span className="partner-industry">{p.industry}</span>
-                <span className="partner-scope">{p.scope}</span>
-              </div>
-              <blockquote className="partner-highlight">{p.highlight}</blockquote>
-              <p className="partner-result">{p.result}</p>
+        <div
+          className="portfolio-slider fade-in"
+          aria-label="合作成果滑动展示"
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+          onFocus={() => setIsPaused(true)}
+          onBlur={(event) => {
+            if (!event.currentTarget.contains(event.relatedTarget)) {
+              setIsPaused(false)
+            }
+          }}
+        >
+          <div className="portfolio-window">
+            <div className="portfolio-track" style={{ transform: `translateX(-${activeIndex * 100}%)` }}>
+              {partners.map((p, i) => (
+                <article key={i} className="partner-slide" aria-hidden={activeIndex !== i}>
+                  <div className="partner-card">
+                    <div className="partner-header">
+                      <span className="partner-industry">{p.industry}</span>
+                      <span className="partner-scope">{p.scope}</span>
+                    </div>
+                    <blockquote className="partner-highlight">{p.highlight}</blockquote>
+                    <p className="partner-result">{p.result}</p>
+                  </div>
+                </article>
+              ))}
             </div>
-          ))}
+          </div>
+
+          <div className="portfolio-controls" aria-label="合作成果轮播控制">
+            <button type="button" className="portfolio-nav" aria-label="上一个成果" onClick={() => goTo(activeIndex - 1)}>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <path d="m15 18-6-6 6-6" />
+              </svg>
+            </button>
+            <div className="portfolio-dots" aria-label="选择合作成果">
+              {partners.map((p, i) => (
+                <button
+                  key={p.industry}
+                  type="button"
+                  className={`portfolio-dot ${activeIndex === i ? 'active' : ''}`}
+                  aria-label={`查看${p.industry}成果`}
+                  aria-current={activeIndex === i}
+                  onClick={() => goTo(i)}
+                >
+                  <span />
+                </button>
+              ))}
+            </div>
+            <button type="button" className="portfolio-nav" aria-label="下一个成果" onClick={() => goTo(activeIndex + 1)}>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <path d="m9 18 6-6-6-6" />
+              </svg>
+            </button>
+          </div>
         </div>
 
         <div className="partners-cta fade-in">
