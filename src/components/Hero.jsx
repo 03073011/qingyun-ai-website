@@ -26,16 +26,6 @@ export default function Hero() {
           <p className="hero-subtitle">
             不卖通用产品。先聊你的业务痛点，再从数据库、大模型到工作流，一步步定制落地。
           </p>
-          <div className="hero-capability-pills" aria-label="核心能力">
-            <span>企业数据库</span>
-            <span>智能知识库</span>
-            <span>业务自动化</span>
-            <span>AI 决策辅助</span>
-          </div>
-          <div className="hero-actions">
-            <a href="#contact" className="btn-primary">预约需求评估</a>
-            <a href="#portfolio" className="btn-ghost">查看案例 →</a>
-          </div>
         </div>
       </div>
     </section>
