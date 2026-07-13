@@ -1,23 +1,15 @@
-import ScrollAnimations from './components/ScrollAnimations'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import Services from './components/Services'
 import Process from './components/Process'
 import Portfolio from './components/Portfolio'
 import Contact from './components/Contact'
+import useSnapScroll from './hooks/useSnapScroll'
 
 function FooterIcon({ type }) {
   const paths = {
     phone: (
-      <path d="M22 16.92v2.12a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 1.2h2.12a2 2 0 0 1 2 1.72c.12.91.34 1.8.66 2.65a2 2 0 0 1-.45 2.11L7.5 8.62a16 16 0 0 0 5.88 5.88l.94-.94a2 2 0 0 1 2.11-.45c.85.32 1.74.54 2.65.66A2 2 0 0 1 22 15.77Z" />
-    ),
-    message: (
-      <>
-        <path d="M21 11.5a7.5 7.5 0 0 1-7.5 7.5 8.3 8.3 0 0 1-3.8-.93L4 20l1.67-4.45A7.47 7.47 0 0 1 6 4.87 7.5 7.5 0 0 1 21 11.5Z" />
-        <path d="M9.3 11.5h.01" />
-        <path d="M13.5 11.5h.01" />
-        <path d="M17.7 11.5h.01" />
-      </>
+      <path d="M22 16.92v2.12a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 3.3 2 2 0 0 1 4.11 1.2h2.12a2 2 0 0 1 2 1.72c.12.91.34 1.8.66 2.65a2 2 0 0 1-.45 2.11l-.94.94a16 16 0 0 0 5.88 5.88l.94-.94a2 2 0 0 1 2.11-.45c.85.32 1.74.54 2.65.66A2 2 0 0 1 22 15.77Z" />
     ),
     location: (
       <>
@@ -28,40 +20,45 @@ function FooterIcon({ type }) {
   }
 
   return (
-    <svg className="footer-contact-icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <svg className="footer-contact-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
       {paths[type]}
     </svg>
   )
 }
 
 export default function App() {
+  useSnapScroll()
+
   return (
     <>
-      <ScrollAnimations />
       <Navbar />
-      <Hero />
-      <Services />
-      <Process />
-      <Portfolio />
-      <Contact />
-      <footer className="footer">
+      <main>
+        <Hero />
+        <Services />
+        <Process />
+        <Portfolio />
+        <Contact />
+      </main>
+      <footer className="footer" id="footer">
         <div className="container">
           <div className="footer-grid">
             <div className="footer-brand">
-              <span className="footer-logo">◆ 清云智矩</span>
-              <p>企业级 AI 数字化解决方案提供商。<br />从企业数据库到 AI 智能体，为你的业务打造持续进化的数字能力。</p>
+              <a href="#hero" className="footer-logo" aria-label="清云智矩首页">
+                <span className="footer-logo-mark">◆</span>
+                <span>清云智矩</span>
+              </a>
+              <p>融合 AI 的企业智能软件设计与开发服务商。<br />让数据能复用、工作能自动、效率看得见。</p>
             </div>
             <div className="footer-links">
-              <span className="footer-heading">导航</span>
-              <a href="#services">核心服务</a>
-              <a href="#process">合作流程</a>
-              <a href="#portfolio">合作成果</a>
+              <span className="footer-heading">快速导航</span>
+              <a href="#services">解决方案</a>
+              <a href="#process">服务流程</a>
+              <a href="#portfolio">项目案例</a>
               <a href="#contact">联系我们</a>
             </div>
             <div className="footer-links">
-              <span className="footer-heading">联系方式</span>
-              <span className="footer-contact"><FooterIcon type="phone" />134 7621 1139</span>
-              <span className="footer-contact"><FooterIcon type="message" />扫码添加企业微信</span>
+              <span className="footer-heading">联系</span>
+              <a className="footer-contact" href="tel:13476211139"><FooterIcon type="phone" />134 7621 1139</a>
               <span className="footer-contact"><FooterIcon type="location" />武汉 · 中国</span>
             </div>
           </div>

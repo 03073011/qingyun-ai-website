@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hero stack visual comparison</title>
+    <style>
+      * { box-sizing: border-box; }
+      body { margin: 0; padding: 28px; background: #eef3f8; color: #071a3b; font-family: Arial, sans-serif; }
+      main { display: flex; gap: 34px; align-items: flex-start; justify-content: center; }
+      figure { margin: 0; }
+      figcaption { margin-bottom: 10px; font-weight: 700; }
+      .reference { display: block; width: 609px; height: 606px; border: 1px solid #c9d5e4; background: white; object-fit: contain; }
+      .implementation-frame { position: relative; width: 537px; height: 590px; overflow: hidden; border: 1px solid #c9d5e4; background: white; }
+      .implementation-frame img { position: absolute; left: -783px; top: -225px; width: 1440px; height: 1000px; max-width: none; }
+    </style>
+  </head>
+  <body>
+    <main>
+      <figure>
+        <figcaption>参考图</figcaption>
+        <img class="reference" src="./hero-reference.png" alt="参考图" />
+      </figure>
+      <figure>
+        <figcaption>浏览器实现</figcaption>
+        <div class="implementation-frame"><img src="./hero-desktop.png" alt="浏览器实现" /></div>
+      </figure>
+    </main>
+  </body>
+</html>

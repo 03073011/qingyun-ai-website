@@ -1,34 +1,63 @@
 const steps = [
-  { num: '01', title: '需求深度沟通', desc: '了解你的业务场景、数据基础和技术需求，共同梳理项目范围与核心目标。' },
-  { num: '02', title: 'AI 赋能开发', desc: '完成数据库、AI 模型、智能体与工作流集成，让系统不只是上线，更能提升效率。' },
-  { num: '03', title: '交付与持续维护', desc: '全面测试上线，提供操作文档。上线后持续监控、迭代优化，陪伴你的业务成长。' },
+  {
+    num: '01',
+    title: '找到问题',
+    desc: '聚焦最耗时、最重复、最影响结果的环节。',
+    deliverable: '业务机会清单',
+  },
+  {
+    num: '02',
+    title: '样例验证',
+    desc: '用真实数据跑通关键任务，确认可行性与效果。',
+    deliverable: '可操作原型',
+  },
+  {
+    num: '03',
+    title: '软件交付',
+    desc: '完成界面、权限、流程与现有系统接入。',
+    deliverable: '可上线系统',
+  },
+  {
+    num: '04',
+    title: '持续迭代',
+    desc: '根据使用数据和反馈优化，让软件越用越顺。',
+    deliverable: '迭代路线图',
+  },
 ]
 
 export default function Process() {
   return (
-    <section className="section" id="process">
+    <section className="section process-section" id="process">
       <div className="container">
-        <div className="section-header">
-          <span className="section-label">Workflow</span>
-          <h2 className="section-title">合作流程</h2>
+        <div className="section-header section-header-left process-heading">
+          <span className="section-label">02 / 服务流程</span>
+          <h2 className="section-title">先验证价值，再交付软件</h2>
           <p className="section-desc">
-            三步严谨流程，确保每个项目精准落地、超出预期。
+            不从大而全的系统开始。用真实业务和真实数据快速验证，再把有效方案做成稳定的软件。
           </p>
         </div>
-        <div className="process-steps">
-          {steps.map((s, i) => (
-            <div key={i} className="process-step">
-              <div className="step-number">{s.num}</div>
-              <h4>{s.title}</h4>
-              <p>{s.desc}</p>
-            </div>
+
+        <div className="process-steps" aria-label="智能软件交付流程">
+          {steps.map((step) => (
+            <article key={step.num} className="process-step">
+              <div className="step-number">{step.num}</div>
+              <h3>{step.title}</h3>
+              <p>{step.desc}</p>
+            </article>
           ))}
         </div>
+
         <div className="process-note">
-          <span className="process-note-label">沟通优先</span>
+          <span className="process-note-icon" aria-hidden="true">
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+              <circle cx="12" cy="12" r="8" />
+              <path d="M12 2v4M12 18v4M2 12h4M18 12h4" />
+              <circle cx="12" cy="12" r="2" />
+            </svg>
+          </span>
           <div>
-            <h3>先聊需求，再看方案——我们不卖通用产品。</h3>
-            <p>需求不需要一次讲完整。你可以先说业务里最耗时、最重复、最想优化的环节，我们一起判断哪里最适合用数据库和大模型先落地。这是清云智矩和市面上 AI 产品最大的区别。</p>
+            <h3>从一个高价值环节开始</h3>
+            <p>你不需要一次讲清所有需求。先带来一个最耗时的业务环节，我们一起判断最值得从哪里开始。</p>
           </div>
         </div>
       </div>
