@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState } from 'react'
+import qingyunMark from '../assets/qingyun-mark.png'
 
 const links = [
   { href: '#services', label: '解决方案' },
@@ -47,7 +48,7 @@ export default function Navbar() {
     <nav className={`navbar${scrolled ? ' scrolled' : ''}`} aria-label="主导航">
       <div className="container navbar-inner">
         <a href="#hero" className="nav-logo" onClick={() => setMenuOpen(false)}>
-          <span className="logo-icon">◆</span>
+          <img className="logo-icon" src={qingyunMark} alt="" />
           <span>清云智矩</span>
         </a>
 
